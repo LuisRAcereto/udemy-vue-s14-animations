@@ -93,31 +93,32 @@ button:active {
 }
 
 .v-enter-from {
-  opacity: 0;
-  transform: translateY(-30px);
+  /* opacity: 0;
+  transform: translateY(-30px); */
 }
 
 .v-enter-active {
-  transition: all 1s ease-out;
+  animation: slide-scale 0.3s ease-out;
 }
 
 .v-enter-to {
-  opacity: 1;
-  transform: translateY(0);
+  /* opacity: 1;
+  transform: translateY(0); */
 }
 
 .v-leave-from {
-  opacity: 1;
-  transform: translateY(0);
+  /* opacity: 1;
+  transform: translateY(0); */
 }
 
 .v-leave-active {
-  transition: all 1s ease-in;
+  /* transition: all 1s ease-in; */
+  animation: slide-scale 0.3s ease-out;
 }
 
 .v-leave-to {
-  opacity: 0;
-  transform: translateY(30px);
+  /* opacity: 0;
+  transform: translateY(30px); */
 }
 
 @keyframes slide-scale {
