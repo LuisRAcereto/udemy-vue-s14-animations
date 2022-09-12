@@ -4,6 +4,14 @@
     <button @click="animateBlock">Animate</button>
   </div>
   <div class="container">
+    <!-- You can add more than one child to transition if you can guarantee -->
+    <!-- the at least one is added to the DOM at the same time -->
+    <transition name="fade-button" mode="out-in">
+      <button @click="showUsers" v-if="!usersAreVisible">Show Users</button>
+      <button @click="hideUsers" v-else>Hide Users</button>
+    </transition>
+  </div>
+  <div class="container">
     <!-- to replace the whole name additional props can be specified -->
     <!-- <transition enter-to-class="some-class" enter-active-class="other-class" ...> -->
     <!-- Below with the name we overwrite the prefix vi, for whatever name prop has -->
@@ -28,9 +36,16 @@ export default {
       animatedBlock: false,
       dialogIsVisible: false,
       paraIsVisible: false,
+      usersAreVisible: false,
     };
   },
   methods: {
+    showUsers() {
+      this.usersAreVisible = true;
+    },
+    hideUsers() {
+      this.usersAreVisible = false;
+    },
     animateBlock() {
       this.animatedBlock = true;
     },
@@ -122,6 +137,24 @@ button:active {
 .para-leave-to {
   /* opacity: 0;
   transform: translateY(30px); */
+}
+
+.fade-button-enter-from,
+.fade-button-leave-to {
+  opacity: 0;
+}
+
+.fade-button-enter-active {
+  transition: Opacity 0.3s ease-out;
+}
+
+.fade-button-leave-active {
+  transition: Opacity 0.3s ease-in;
+}
+
+.fade-button-enter-to,
+.fade-button-leave-from {
+  opacity: 1;
 }
 
 @keyframes slide-scale {
