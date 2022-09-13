@@ -1,5 +1,8 @@
 <template>
   <div class="container">
+    <users-list></users-list>
+  </div>
+  <div class="container">
     <div class="block" :class="{ animate: animatedBlock }"></div>
     <button @click="animateBlock">Animate</button>
   </div>
@@ -14,9 +17,9 @@
   <div class="container">
     <!-- to replace the whole name additional props can be specified -->
     <!-- <transition enter-to-class="some-class" enter-active-class="other-class" ...> -->
-    <!-- Below with the name we overwrite the prefix vi, for whatever name prop has -->
+    <!-- css prop is used to disabled CSS, telling VueJS that transition will not use it -->
     <transition
-      name="para"
+      :css="false"
       @before-enter="beforeEnter"
       @enter="enter"
       @after-enter="afterEnter"
@@ -40,7 +43,12 @@
 </template>
 
 <script>
+import UsersList from './components/UsersList.vue';
+
 export default {
+  components: {
+    UsersList,
+  },
   data() {
     return {
       animatedBlock: false,
