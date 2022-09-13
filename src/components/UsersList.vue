@@ -1,4 +1,6 @@
 <template>
+  <!-- transition-group allows to animate items in a list, multiple items at same time, -->
+  <!-- allow us to move items smoothly. -->
   <transition-group tag="ul" name="user-list">
     <li v-for="user in users" :key="user" @click="removeUser(user)">
       {{ user }}
