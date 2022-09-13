@@ -22,6 +22,7 @@ app.use(router);
 
 // Use the function below to only mount once the router is fully set up and
 // aware of the page that should be loaded.
+// this helps to avoid any initial animation that home/landing page may have.
 router.isReady().then(function () {
   app.mount('#app');
 });
